@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#101512" />
+    <meta
+      name="description"
+      content="指尖上的现代街机贪吃蛇。滑动或按键，挑战你的最高分。"
+    />
+    <title>Snake / 指尖街机</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23101512'/%3E%3Cpath d='M8 22V10h8v12h8V10' fill='none' stroke='%23c6f578' stroke-width='5'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="script.js"></script>
+  </head>
+  <body>
+    <main class="arcade">
+      <header class="header">
+        <a class="brand" href="./" aria-label="Snake 首页"
+          ><svg class="brand-mark" aria-hidden="true" viewBox="0 0 24 24">
+            <path
+              d="M4 19V5h8v14h8V5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="4"
+              stroke-linejoin="round"
+            />
+          </svg>
+          SNAKE<span class="brand-dot">.</span></a
+        ><span class="edition">指尖街机 / 01</span>
+      </header>
+      <section class="game-layout" aria-label="贪吃蛇游戏">
+        <div class="play-column">
+          <div class="hud">
+            <div>
+              <span class="label">当前分数</span><strong id="score">00</strong>
+            </div>
+            <div>
+              <span class="label"
+                >最高纪录 <span class="tiny-star">✦</span></span
+              ><strong id="best">00</strong>
+            </div>
+            <div class="speed">
+              <span class="label">速度</span><span id="level">01</span
+              ><span class="speed-bars" aria-hidden="true">▂▄▆</span>
+            </div>
+          </div>
+          <div class="board-wrap" id="board-wrap">
+            <canvas
+              id="board"
+              width="600"
+              height="600"
+              tabindex="0"
+              aria-label="贪吃蛇棋盘：滑动、方向键或 WASD 控制方向"
+            ></canvas>
+            <div class="overlay" id="overlay">
+              <div class="overlay-content">
+                <span class="eyebrow" id="eyebrow">ONE MORE BITE</span>
+                <div class="snake-symbol" aria-hidden="true">
+                  ▰<br />▰ ▰ ▰<br />　　▰
+                </div>
+                <h1 id="overlay-title">再吃一口。</h1>
+                <p id="overlay-description">滑动指尖，接住每一次挑战。</p>
+                <button class="primary" id="primary">
+                  开始游戏 <span>↗</span></button
+                ><span class="overlay-hint" id="overlay-hint"
+                  >吃到食物 +10 · 别撞到边界和自己</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="board-footer">
+            <span
+              ><i id="status-light"></i><span id="status">准备就绪</span></span
+            ><span>20 × 20</span>
+          </div>
+        </div>
+        <aside class="controls" aria-label="游戏操作">
+          <div class="control-heading">
+            <span class="eyebrow">KEEP IT MOVING</span>
+            <h2>下一口，<br />更高分。</h2>
+            <p>滑动棋盘，或轻触方向键。</p>
+          </div>
+          <div class="toolbar">
+            <button id="pause" disabled aria-label="暂停游戏">
+              Ⅱ <span>暂停</span></button
+            ><button id="restart" aria-label="重新开始游戏">
+              ↻ <span>重开</span></button
+            ><button id="sound" aria-pressed="false" aria-label="开启音效">
+              ♪ <span>声音关</span>
+            </button>
+          </div>
+          <div class="dpad" aria-label="方向控制">
+            <button data-direction="up" class="up" aria-label="向上">↑</button
+            ><button data-direction="left" class="left" aria-label="向左">
+              ←</button
+            ><span class="dpad-center" aria-hidden="true">✦</span
+            ><button data-direction="right" class="right" aria-label="向右">
+              →</button
+            ><button data-direction="down" class="down" aria-label="向下">
+              ↓
+            </button>
+          </div>
+          <p class="help">
+            <span class="touch-help">滑动控制 · 轻触转向</span
+            ><span class="keyboard-help">方向键 / WASD · 空格暂停</span>
+          </p>
+        </aside>
+      </section>
+      <footer class="footer">
+        <span>小小棋盘，无限下一局。</span
+        ><span>BUILT FOR THE NEXT BITE ↗</span>
+      </footer>
+      <div id="announcement" class="sr-only" aria-live="polite"></div>
+    </main>
+  </body>
+</html>
