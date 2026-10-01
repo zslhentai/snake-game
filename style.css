@@ -369,10 +369,13 @@ p {
     margin: 0;
   }
   .dpad {
-    grid-template-columns: 60px 60px 60px;
-    grid-template-rows: 46px 46px 46px;
-    margin: 14px 0 8px;
-    gap: 5px;
+    grid-template-columns: repeat(3, 70px);
+    grid-template-rows: repeat(3, 54px);
+    margin: 10px 0 4px;
+    gap: 3px;
+  }
+  .dpad button {
+    font-size: 27px;
   }
   .help {
     margin: 8px 0 0;
@@ -442,8 +445,16 @@ p {
     display: none;
   }
   .dpad {
-    margin: 16px 0 8px;
-    grid-template-rows: 48px 48px 48px;
+    margin: 12px 0 4px;
+    grid-template-columns: repeat(3, 68px);
+    grid-template-rows: repeat(3, 56px);
+    gap: 3px;
+  }
+  .dpad button {
+    font-size: 27px;
+  }
+  .help {
+    margin: 8px 0 0;
   }
   .footer {
     display: none;
@@ -478,6 +489,11 @@ p {
   }
   .keyboard-help {
     display: none;
+  }
+}
+@media (orientation: landscape) and (max-height: 340px) {
+  .arcade {
+    padding-bottom: max(3px, env(safe-area-inset-bottom));
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -529,7 +545,7 @@ p {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 174px;
     column-gap: 12px;
-    row-gap: 8px;
+    row-gap: 4px;
   }
   .toolbar {
     flex-direction: column;
@@ -541,10 +557,16 @@ p {
     height: 44px;
   }
   .dpad {
-    grid-template-columns: 54px 54px 54px;
-    grid-template-rows: 44px 44px 44px;
-    margin: 12px 0 0;
-    gap: 5px;
+    /* Wider hit targets share column space, but separate rows prevent overlap.
+       Keep the 174px control column so the toolbar retains its exact width. */
+    grid-template-columns: repeat(3, 50px);
+    grid-template-rows: repeat(3, 52px);
+    margin: 8px 0 0;
+    gap: 3px;
+  }
+  .dpad button {
+    width: 64px;
+    justify-self: center;
   }
   .help {
     grid-column: 1/-1;
